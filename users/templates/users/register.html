@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    <h2>Login</h2>
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <!-- Renderizando o formulário com Crispy Forms para aplicar o estilo do Bootstrap 4 -->
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        <input type="hidden" name="next" value="{% url 'index' %}"/>
+    </form>
+
+{% endblock content %}
