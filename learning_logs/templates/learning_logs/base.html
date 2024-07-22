@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Log</title>
+    <!-- Link para o CSS do Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link para o CSS do Crispy Forms -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/django-crispy-forms/1.9.2/crispy-forms.min.css">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}">Learning Log</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Link para a página de tópicos -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'topics' %}">Tópicos</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <!-- Mensagem de boas-vindas ou link para login -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Olá, {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+                    </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Registrar</a>
+                </li>               
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Bloco de conteúdo específico das páginas -->
+        {% block content %}{% endblock content %}
+    </div>
+
+    <!-- Scripts do Bootstrap 4 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

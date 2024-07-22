@@ -1,0 +1,28 @@
+{% extends "learning_logs/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card my-4">
+    <div class="card-header">
+        <h2>Tópico: {{ topic }}</h2>
+    </div>
+    <div class="card-body">
+        <p>Anotações:</p>
+        <a href="{% url 'new_entry' topic.id %}" class="btn btn-primary mb-3">Adicione uma nova anotação</a>
+        <ul class="list-group">
+            {% for entry in entries %}
+            <li class="list-group-item">
+                <p class="mb-1"><strong>{{ entry.date_added | date }}</strong></p>
+                <p>{{ entry.text | linebreaks }}</p>
+                <a href="{% url 'edit_entry' entry.id %}" class="btn btn-secondary btn-sm">Editar anotação</a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">
+                Não há registros
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

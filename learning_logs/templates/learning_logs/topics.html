@@ -1,0 +1,23 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+<div class="card my-4">
+    <div class="card-header">
+        <h2>Tópicos</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group mb-3">
+            {% for topic in topics %}
+            <li class="list-group-item">
+                <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">
+                Não há tópicos.
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'new_topic' %}" class="btn btn-primary">Adicionar tópico</a>
+    </div>
+</div>
+{% endblock content %}
