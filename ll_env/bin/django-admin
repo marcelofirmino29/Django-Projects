@@ -1,4 +1,4 @@
-#!/home/marcelo/Documentos/GitHub/Django-Projects/ll_env/bin/python
+#!/home/marcelo/Documentos/GitHub/Django-Projects/ll_env/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
