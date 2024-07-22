@@ -80,10 +80,15 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',  # Substitua pelo nome do seu banco de dados
+        'USER': 'root',             # Substitua pelo seu usuário do MySQL
+        'PASSWORD': '1234',           # Substitua pela sua senha do MySQL
+        'HOST': 'localhost',               # Ou o endereço do servidor MySQL
+        'PORT': '3306',                    # Porta padrão do MySQL
     }
 }
+
 
 
 # Password validation
